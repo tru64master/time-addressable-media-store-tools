@@ -75,6 +75,11 @@
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.16"
   },
+  "overrides": {
+    "@byomakase/omakase-player": {
+      "axios": "^1.19.0"
+    }
+  },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "^0.28.0",
     "@esbuild/linux-x64": "^0.28.0",
