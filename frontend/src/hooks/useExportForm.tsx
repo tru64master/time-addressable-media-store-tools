@@ -33,9 +33,10 @@ export const useExportForm = (
   };
 
   const isFormValid = useMemo(() => {
-    return !formSchema?.required?.some(
-      (fieldName) => !formData[fieldName]?.trim(),
-    );
+    return !formSchema?.required?.some((fieldName) => {
+      const value = formData[fieldName];
+      return typeof value === "string" ? value.trim() === "" : value == null;
+    });
   }, [formSchema?.required, formData]);
 
   return {

@@ -30,7 +30,7 @@ type Props = {
 
 const DynamicForm = ({ schema, formData, onChange }: Props) => {
   const renderField = (fieldName: string, fieldSchema: FieldSchema) => {
-    const value = formData[fieldName] || "";
+    const value = formData[fieldName];
     const handleChange = (newValue: string | number | boolean) => {
       onChange({ formData: { ...formData, [fieldName]: newValue } });
     };
@@ -75,7 +75,7 @@ const DynamicForm = ({ schema, formData, onChange }: Props) => {
       return (
         <Checkbox
           key={fieldName}
-          checked={value || false}
+          checked={Boolean(value)}
           onChange={({ detail }) => handleChange(detail.checked)}
           {...cloudscapeProps}
         >
@@ -93,7 +93,7 @@ const DynamicForm = ({ schema, formData, onChange }: Props) => {
         >
           <Input
             type="number"
-            value={value || ""}
+            value={String(value ?? "")}
             onChange={(event) => handleChange(event.detail.value)}
             placeholder={fieldSchema.placeholder}
             step={fieldSchema.type === "integer" ? 1 : undefined}
@@ -111,7 +111,7 @@ const DynamicForm = ({ schema, formData, onChange }: Props) => {
           {...formFieldProps}
         >
           <Textarea
-            value={value || ""}
+            value={String(value ?? "")}
             onChange={({ detail }) => handleChange(detail.value)}
             placeholder={fieldSchema.placeholder}
             {...cloudscapeProps}
@@ -127,7 +127,7 @@ const DynamicForm = ({ schema, formData, onChange }: Props) => {
         {...formFieldProps}
       >
         <Input
-          value={value}
+          value={String(value ?? "")}
           onChange={(event) => handleChange(event.detail.value)}
           placeholder={fieldSchema.placeholder}
           {...cloudscapeProps}
