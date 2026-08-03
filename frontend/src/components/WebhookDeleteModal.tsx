@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { Modal, TextContent } from "@cloudscape-design/components";
 import CancelModalFooter from "@/components/CancelModalFooter";
 import useAlertsStore from "@/stores/useAlertsStore";

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { TextContent } from "@cloudscape-design/components";
 import type { Uuid } from "@/types/tams";
 

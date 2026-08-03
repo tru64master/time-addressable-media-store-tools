@@ -8,7 +8,7 @@ import {
   IS_HLS_INGEST_DEPLOYED,
   IS_FFMPEG_DEPLOYED,
 } from "@/constants";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router";
 import Diagram from "@/views/Diagram";
 import Flow from "@/views/Flow";
 import Flows from "@/views/Flows";

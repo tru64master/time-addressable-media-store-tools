@@ -9,14 +9,9 @@
     // React & JSX
     "jsx": "react-jsx",
     "module": "ESNext",
-    "declaration": true,
-    "declarationDir": "types",
-    "sourceMap": true,
-    "rootDir": "./src",
-    "outDir": "./dist",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
+    "noEmit": true,
 
     // Path aliases
     "paths": {

@@ -5,7 +5,7 @@ import {
   Spinner,
   TextContent,
 } from "@cloudscape-design/components";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router";
 import ValueWithLabel from "@/components/ValueWithLabel";
 import { useObjects } from "@/hooks/useObjects";
 

@@ -10,7 +10,7 @@ import {
   Flashbar,
   SideNavigation,
 } from "@cloudscape-design/components";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router";
 import Header from "@/components/Header";
 import { useState } from "react";
 import useAlertsStore from "@/stores/useAlertsStore";

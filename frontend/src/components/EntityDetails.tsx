@@ -5,7 +5,7 @@ import {
   StatusIndicator,
   CopyToClipboard,
 } from "@cloudscape-design/components";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import ValueWithLabel from "@/components/ValueWithLabel";
 import EditableField from "@/components/EditableField";
 import { DATE_FORMAT, STATUS_MAPPINGS } from "@/constants";

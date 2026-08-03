@@ -5,7 +5,7 @@ import {
   Spinner,
   TextContent,
 } from "@cloudscape-design/components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import { useRef, useState } from "react";
 import CytoscapeComponent from "react-cytoscapejs";
 import Legend from "./components/Legend";

@@ -10,7 +10,7 @@ import {
   Table,
   TextFilter,
 } from "@cloudscape-design/components";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useCollection } from "@cloudscape-design/collection-hooks";
 import { useJobs } from "@/hooks/useFfmpeg";
 import type { JobTarget } from "@/types/ingestFFmpeg";

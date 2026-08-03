@@ -5,7 +5,7 @@ import {
   Spinner,
   Tabs,
 } from "@cloudscape-design/components";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 import CollectedBy from "@/components/CollectedBy";
 import Collection from "@/components/Collection";

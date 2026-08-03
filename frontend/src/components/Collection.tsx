@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Table } from "@cloudscape-design/components";
 import { useCollection } from "@cloudscape-design/collection-hooks";
 import type { FlowCollection } from "@/types/tams";

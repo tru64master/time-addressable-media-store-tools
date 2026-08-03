@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import type { ButtonProps } from "@cloudscape-design/components";
 
 export const useFollowLink = () => {

@@ -13,7 +13,7 @@ import {
   Toggle,
 } from "@cloudscape-design/components";
 import { useFlows } from "@/hooks/useFlows";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useCollection } from "@cloudscape-design/collection-hooks";
 import usePreferencesStore from "@/stores/usePreferencesStore";
 import ReplicationModal from "@/components/ReplicationModal";

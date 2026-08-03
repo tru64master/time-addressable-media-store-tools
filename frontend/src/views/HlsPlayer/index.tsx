@@ -1,7 +1,7 @@
 import { useRef, useMemo, useCallback, useState } from "react";
 import { Box, Alert } from "@cloudscape-design/components";
 import VideoJS from "./components/VideoJS";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useLambdaPresignedUrl } from "@/hooks/useLambdaPresignedUrl";
 import "./hlsjsSourceHandler";
 import type videojs from "video.js";

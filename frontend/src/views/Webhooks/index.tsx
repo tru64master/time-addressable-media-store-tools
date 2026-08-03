@@ -13,7 +13,7 @@ import {
   TextFilter,
 } from "@cloudscape-design/components";
 import { useWebhooks } from "@/hooks/useWebhooks";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useCollection } from "@cloudscape-design/collection-hooks";
 import usePreferencesStore from "@/stores/usePreferencesStore";
 import WebhookRegisterUpdateModal from "@/components/WebhookRegisterUpdateModal";

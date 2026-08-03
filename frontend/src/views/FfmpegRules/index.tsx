@@ -10,7 +10,7 @@ import {
 import DeleteModal from "./components/DeleteModal";
 import { useRules } from "@/hooks/useFfmpeg";
 import { PAGE_SIZE } from "@/constants";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useCollection } from "@cloudscape-design/collection-hooks";
 import type { RuleTarget } from "@/types/ingestFFmpeg";
 import type { TableProps } from "@cloudscape-design/components";

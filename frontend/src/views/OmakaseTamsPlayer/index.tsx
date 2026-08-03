@@ -2,7 +2,7 @@ import "@byomakase/omakase-player/dist/style.css";
 import "@byomakase/omakase-react-components/dist/omakase-react-components.css";
 import "./style.css";
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useAuth } from "react-oidc-context";
 import { Box, Grid } from "@cloudscape-design/components";
 import {

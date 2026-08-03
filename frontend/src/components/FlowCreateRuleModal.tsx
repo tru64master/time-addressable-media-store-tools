@@ -8,7 +8,7 @@ import {
 } from "@cloudscape-design/components";
 import CancelModalFooter from "@/components/CancelModalFooter";
 import FfmpegCommandSelector from "@/components/FfmpegCommandSelector";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import useAlertsStore from "@/stores/useAlertsStore";
 import { useCreateRule } from "@/hooks/useFfmpeg";
 import { useFfmpegCommandSelector } from "@/hooks/useFfmpegCommandSelector";
