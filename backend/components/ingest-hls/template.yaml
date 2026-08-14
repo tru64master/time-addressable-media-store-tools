@@ -409,7 +409,7 @@ Resources:
           - Id: 'ExpireRule'
             Status: 'Enabled'
             ExpirationInDays: 2
-             
+
       VersioningConfiguration:
         Status: Suspended
       PublicAccessBlockConfiguration:
@@ -439,7 +439,7 @@ Outputs:
 
   IngestHlsArn:
     Value: !Ref IngestHls
-  
+
   ContentIngestBucketName:
     Value: !Ref ContentIngestBucket
-    Description: Name of the S3 bucket for content ingestion  
+    Description: Name of the S3 bucket for content ingestion

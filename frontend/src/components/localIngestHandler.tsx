@@ -89,7 +89,7 @@ const LocalIngestHandler = ({
 
     // We now do the upload to S3 for all the data. First we need a jobID...
     const jobId = `local-${crypto.randomUUID()}-${Date.now()}`;
-  
+
     // Step 1: flatten all uploadable files
     const files = Array.from(fileList.flatMap((map) => Array.from(map.values())));
 
@@ -113,12 +113,12 @@ const LocalIngestHandler = ({
     if (!masterm3u8 && masterList.length > 0) {
       masterm3u8 = masterList[0];
       console.debug(`No master manifest set, using first found: ${masterm3u8}`);
-    }; 
+    };
 
     console.debug("MasterM3U8 is: ", masterm3u8);
 
     // Get an S3 client to use for upload.
-    const s3Client = await getS3Client();  
+    const s3Client = await getS3Client();
     console.debug(`Initialized S3 client. ${s3Client}`);
 
     // if there is still no master manifest, create one from the manifests we have.
@@ -128,7 +128,7 @@ const LocalIngestHandler = ({
       const manifestKey = `${jobId}/master.m3u8`;
 
       console.debug('Master manifest content:  ', madeManifest);
-        
+
       // Upload the master.
       const upload = new Upload({
         client: s3Client,
@@ -148,10 +148,10 @@ const LocalIngestHandler = ({
       masterList.push(manifestUrl);
     } else {
         console.debug(`Master manifest(s) found: ${masterList.join(", ")}`);
-    }  
+    }
 
     console.debug(`Master manifest list: ${JSON.stringify(masterList)}`);
-    
+
     if (masterList.length > 1) {
       console.warn("Multiple master manifests found. This is not currently supported. Please ensure only one master manifest is included in the upload.");
       addAlertItem({
@@ -165,7 +165,7 @@ const LocalIngestHandler = ({
     }
 
     console.debug(`Using master manifest: ${masterList[0]}`);
-    
+
     // Now upload all the files to S3.
     const isHLS = files.some(f => f.type === "manifest" && packageType === "HLS" );
     const isDASH = files.some(f => f.type === "manifest" && packageType === "DASH" );
@@ -174,7 +174,7 @@ const LocalIngestHandler = ({
 
     const totalBytes = files.reduce((sum, fileInfo) => sum + fileInfo.file.size,0);
     let uploadedBytes = 0;
-    
+
     console.debug(`Total bytes to upload: ${totalBytes}`);
     console.debug(`Total files to upload: ${files.length}`);
     console.debug(`Job ID: ${jobId}`);
@@ -196,7 +196,7 @@ const LocalIngestHandler = ({
           Key: key,
           Body: file,
         },
-      });    
+      });
 
       // Track how many bytes have been uploaded across all files to provide overall progress feedback.
       let previousLoaded = 0;
@@ -251,7 +251,7 @@ const LocalIngestHandler = ({
     setMasterM3U8(masterm3u8);
 
     console.debug(`Manifest result: ${JSON.stringify(result)}`);
-    onComplete(result);    
+    onComplete(result);
   };
 
   const handleDismiss = () => {
@@ -290,7 +290,7 @@ const LocalIngestHandler = ({
 
       const relativePath = file.webkitRelativePath || file.name;
       const fileExtension = file.name ? file.name.split(".").pop().toLowerCase() : undefined;
-      
+
       if (fileExtension && (fileExtension === "m3u8" || fileExtension === "mpd")) {
         // Validate the manifest file to ensure it is a valid HLS or DASH manifest.
         const isValidManifest = await validateManifestFile(file);
@@ -331,7 +331,7 @@ const LocalIngestHandler = ({
                 // Display a progress bar to show how many files have been processed.
                 setProgress(Math.round(((filecount + 1)/ total) * 100))
                 validVideo = true;
-                console.log("Video File Count:", filecount);                               
+                console.log("Video File Count:", filecount);
               };
               break;
         case "audio":
@@ -347,7 +347,7 @@ const LocalIngestHandler = ({
             console.log("Unknown media type");
       };
     };
-    
+
     setIsProcessing(false);
     console.log(`Add to ${mediaType} Manifest: ${JSON.stringify(allManifests)}`);
     console.log(`Validity flags are: Video: ${validVideo} and Audio: ${validAudio}`);
@@ -371,7 +371,7 @@ const LocalIngestHandler = ({
         ...prev[mediaType],
         ...allManifests,
       ],
-    }));    
+    }));
 
     setFileList(prev => [...prev, fileMap]);
     setPackageType(packageType);
@@ -422,8 +422,8 @@ const LocalIngestHandler = ({
 
             <Button onClick={() => document.getElementById("videoFileInput")?.click()}>
               Select Folder containing Video Manifest
-            </Button> 
-          </>         
+            </Button>
+          </>
           )}
 
           {audioSelected && (
@@ -468,7 +468,7 @@ const LocalIngestHandler = ({
             {audioSelected && (
                 <TextContent>
                   Selected Audio Manifest: &nbsp;&nbsp;&nbsp; {manifestList.audio[0]?.name || "None"}
-                </TextContent>         
+                </TextContent>
             )}
           </>
           ))
@@ -497,12 +497,12 @@ const LocalIngestHandler = ({
                   Currently Uploading: {currentFile}
               </span>
             </div>
-            
+
             <ProgressBar
               value={uploadProgress}
               label={`Uploading package (${uploadProgress}%)`}
               description={`${uploadProgress}% complete`}
-            />           
+            />
           </>
         )}
         </SpaceBetween>

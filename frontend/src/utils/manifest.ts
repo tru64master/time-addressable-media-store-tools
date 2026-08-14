@@ -45,7 +45,7 @@ export class Segment {
   getExtension() {
     return this.extension;
   }
-  
+
   getName() {
     return this.name;
   }
@@ -88,7 +88,7 @@ export type PackageType = "HLS" | "DASH";
 
 // Utility function to identify the manifest type.
 export const PackageTypeOptions = [
-  { ext: "m3u8", type: "HLS", validate: (file) => 
+  { ext: "m3u8", type: "HLS", validate: (file) =>
           new Promise((resolve) => {
                                       const reader = new FileReader();
                                       reader.onload = (ev) => {resolve(ev.target.result.startsWith("#EXTM3U"));}
@@ -96,7 +96,7 @@ export const PackageTypeOptions = [
                                       reader.readAsText(file);
                                   }),
   },
-  { ext: "mpd", type: "DASH", validate: (file) => 
+  { ext: "mpd", type: "DASH", validate: (file) =>
           new Promise((resolve) => {
                                       const reader = new FileReader();
                                       reader.onload = (ev) => {resolve(ev.target.result.includes("<MPD"));}
@@ -153,7 +153,7 @@ const videoFileOptions: FileTypeOption[] = [
   { ext: "mpeg", type: "MPEG Video", magic: [0x00, 0x00, 0x01, 0xBA] },
   { ext: "mpegts", type: "MPEG-TS Video", magic: [0x47] },
   { ext: "m4s", type: "M4S Video", magic: [0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70] },
-]; 
+];
 
 // Allowed Audio file types and their magic numbers for validation.
 const audioFileOptions: FileTypeOption[] = [
@@ -206,7 +206,7 @@ export async function detectTsType(stream: Uint8Array): Promise<StreamType> {
         }
     }
   }
-  
+
   // Look in the PAT to find the PMT PID.
   function findPMTPid(data: Uint8Array): number | null {
     let pmtPid: number | null = null;
@@ -260,7 +260,7 @@ export async function detectTsType(stream: Uint8Array): Promise<StreamType> {
       const sectionEnd = tableStart + 3 + sectionLength;
       // Need to remove the CRC part.
       const endOfPrograms = sectionEnd - 4;
-      console.debug(`Section length: ${sectionLength} starting at ${tableStart} ending at ${sectionEnd} with end of programs at ${endOfPrograms}`);      
+      console.debug(`Section length: ${sectionLength} starting at ${tableStart} ending at ${sectionEnd} with end of programs at ${endOfPrograms}`);
 
       console.debug("PAT: ", payload[tableStart]);
       // table_id
@@ -301,7 +301,7 @@ export async function detectTsType(stream: Uint8Array): Promise<StreamType> {
       const tableID = payload[sectionStart];
 
       console.debug("PMT Table ID: ", tableID);
-      
+
       if (tableID != 0x2) {
         throw new Error("Expected PMT");
       }
@@ -383,7 +383,7 @@ export const validateVideoFile = async (file:File):Promise<boolean> => {
         // If this is not a ts file then check if it might be a video file in some other format.
         const isValid = await verifyMagicNumber(file, videoOption.magic);
         console.debug("Video file validation result:", isValid);
-        return isValid;   
+        return isValid;
     }
 
     return false;
@@ -413,7 +413,7 @@ export const validateAudioFile = async (file:File):Promise<boolean> => {
     } else {
         // If this is not a ts file then check to see if it is some other sort of audio file.
         isValid = await verifyMagicNumber(file, audioOption.magic);
-        console.debug("Audio file validation result:", isValid);   
+        console.debug("Audio file validation result:", isValid);
     }
     return isValid;
   }
@@ -480,7 +480,7 @@ export const manifestType = async (manifest) => {
 }
 
 export const isMasterManifest = (playList) => {
-  return playList.isMasterPlaylist;  
+  return playList.isMasterPlaylist;
 }
 
 export const isMediaManifest = (playList) => {
@@ -508,7 +508,7 @@ export const findMaster = async (manifestList) => {
 export const createMaster = (videoManifests:Manifest[], audioManifest:Manifest[]) => {
   // create a master manifest using the provided list
   if (videoManifests.length !== 0) {
-    console.debug('Manifests: ', videoManifests[0]);    
+    console.debug('Manifests: ', videoManifests[0]);
   } else {
     console.debug('No video manifests provided.');
   }

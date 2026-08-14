@@ -17,7 +17,7 @@ export default defineConfig({
       "@aws-sdk/credential-provider-web-identity",
       "@aws-sdk/credential-provider-ini",
       "@aws-sdk/credential-provider-node",
-    ],    
+    ],
   },
   ssr: {
     noExternal: [
@@ -28,7 +28,7 @@ export default defineConfig({
       "@aws-sdk/credential-provider-ini",
     ],
   },
-    
+
   plugins: [react()],
   resolve: {
     alias: [

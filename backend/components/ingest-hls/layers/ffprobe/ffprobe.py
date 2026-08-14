@@ -38,7 +38,7 @@ def ffprobe_link(source, byterange=None):
             offset = int(offset_str)
             end = offset + int(length_str) - 1
             args.extend(["-headers", f"Range: bytes={offset}-{end}\r\n"])
-        
+
         args.extend(
             [
                 "-show_format",
@@ -48,7 +48,7 @@ def ffprobe_link(source, byterange=None):
                 "json",
             ]
         )
-              
+
         ffprobe = subprocess.run(
             args,
             check=True,

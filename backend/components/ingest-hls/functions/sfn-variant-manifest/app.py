@@ -325,7 +325,6 @@ def is_muxed_variant(
     logger.debug(f"Probe result: {json.dumps(probe, indent=2)}")
     stream_types = {stream.get("codec_type") for stream in probe.get("streams", [])}
     logger.info(f"Probe result stream types: {stream_types}")
-    
     return "video" in stream_types and "audio" in stream_types
 
 
@@ -468,10 +467,10 @@ def process_playlists(
         # because HLS manifests are free to list CODECS in any order.
         video_codec = next((c for c in tams_codecs if c[0].startswith("video/")), None)
         audio_codec = next((c for c in tams_codecs if c[0].startswith("audio/")), None)
-        
+
         logger.debug(f"Processing playlist '{playlist.uri}' with CODECS {playlist.stream_info.codecs} - audio_group_id={audio_group_id} - video_codec={video_codec} - audio_codec={audio_codec}")
         logger.debug(f"Playlists {[p.uri for p in manifest.playlists]}")
-        
+
         if is_muxed_variant(probe, tams_codecs, audio_group_id):
             if not video_codec or not audio_codec:
                 raise ValueError(
@@ -673,12 +672,12 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
             f"Manifest '{manifest_location}' is a media manifest. This workflow requires a variant/master manifest."
         )
     multi_source_id = event.get("sourceId") or str(uuid.uuid4())
-    
+
     logger.debug(f"Processing variant manifest '{manifest_location}' with label '{label}' and multi source_id '{multi_source_id}'")
     logger.debug(f"Variant manifest playlists: {[p.uri for p in manifest.playlists]}")
     logger.debug(f"Variant manifest media: {[m.uri for m in manifest.media]}")
     logger.debug(f"manifest_path: {manifest_path}")
-    
+
     (
         playlist_flows,
         variant_multi_flows,
